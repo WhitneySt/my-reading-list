@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const StyledFigure = styled.figure`
   width: 250px;
@@ -14,9 +15,15 @@ const StyledFigure = styled.figure`
 `;
 
 const Card = ({ book }) => {
+   const navigate = useNavigate();
   return (
-    <StyledFigure>
-      <img src={book.cover} alt={book.title} />
+    <StyledFigure
+      onClick={() => {
+        console.log("hice click");
+        navigate(`/book/${book.id}`);
+      }}
+    >
+      <img src={book.book.cover} alt={book.book.title} />
     </StyledFigure>
   );
 };
